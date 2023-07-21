@@ -381,6 +381,7 @@
 "Assets/script/scet.cs"
 "Assets/script/Super.cs"
 "Assets/script/wasd.cs"
+"Assets/script/wins.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"
