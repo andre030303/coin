@@ -52,14 +52,14 @@ public class wasd : MonoBehaviour
     public void SuperUp(int perenos)
     {
         Rb.velocity = new Vector2(0,jumpspeed);
-        jump = (int)transform.position.y + perenos;
+        jump = (int)transform.position.y * perenos;
         prov1 = true;
     }
 
     public void SuperDown(int perenos)
     {
         Rb.velocity = new Vector2(0,-jumpspeed);
-        jump = (int)transform.position.y - perenos;
+        jump = (int)transform.position.y / perenos;
         prov2 = true;
     }
 

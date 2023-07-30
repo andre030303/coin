@@ -6,31 +6,35 @@ public class winGen : MonoBehaviour
 {
     [SerializeField] private GameObject obeject;
     [SerializeField] private GameObject gg;
-    [SerializeField] private int i;
-    [SerializeField] private int i2;
-    [SerializeField] private bool i3;
+    [SerializeField] private int linespawn;
+    [SerializeField] private int lineend;
+    [SerializeField] private bool spawn;
+    [SerializeField] private Config Config;
 
     void Start()
     {
         gg = GameObject.Find("gg");
-        if(transform.position.y < i2)
+        Config = (GameObject.Find("Config")).GetComponent<Config>();
+        linespawn = Config.linespawn;
+        lineend = Config.lineend;
+        if(transform.position.y < lineend)
         {
             Instantiate(obeject, transform.position, Quaternion.identity);
-            i3 = true;
+            spawn = true;
         }
     }
 
     void Update()
     {
-        if(i < gg.transform.position.y)
+        if(linespawn < gg.transform.position.y)
         {
-            i+=1000;
-            i2+=1000;
+            linespawn+=1000;
+            lineend+=1000;
         }
-        if(transform.position.y < i2 && !i3)
+        if(transform.position.y < lineend && !spawn)
         {
             Instantiate(obeject, transform.position, Quaternion.identity);
-            i3 = true;
+            spawn = true;
         }
     }
 }

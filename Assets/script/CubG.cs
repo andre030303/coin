@@ -8,34 +8,38 @@ public class CubG : MonoBehaviour
     [SerializeField] private GameObject obeject;
     [SerializeField] private GameObject gg;
     [SerializeField] private GameObject win;
-    [SerializeField] private int i;
-    [SerializeField] private int i2;
-    [SerializeField] private bool i3;
+    [SerializeField] private int linespawn;
+    [SerializeField] private int lineend;
+    [SerializeField] private bool spawn;
+    [SerializeField] private Config Config;
 
     void Start()
     {
         gg = GameObject.Find("gg");
         win = GameObject.Find("win");
-        if(transform.position.y < i2 && transform.position.x < win.transform.position.x)
+        Config = (GameObject.Find("Config")).GetComponent<Config>();
+        linespawn = Config.linespawn;
+        lineend = Config.lineend;
+        if(transform.position.y < lineend && transform.position.x < win.transform.position.x)
         {
             int ran = Random.Range(0, prifads.Length);
             obeject = Instantiate(prifads[ran], transform.position, Quaternion.identity);
-            i3 = true;
+            spawn = true;
         }
     }
 
     void Update()
     {
-        if(i < gg.transform.position.y)
+        if(linespawn < gg.transform.position.y)
         {
-            i+=100;
-            i2+=100;
+            linespawn+=100;
+            lineend+=100;
         }
-        if(transform.position.y < i2 && transform.position.x < win.transform.position.x && !i3)
+        if(transform.position.y < lineend && transform.position.x < win.transform.position.x && !spawn)
         {
             int ran = Random.Range(0, prifads.Length);
             obeject = Instantiate(prifads[ran], transform.position, Quaternion.identity);
-            i3 = true;
+            spawn = true;
         }
     }
 }
